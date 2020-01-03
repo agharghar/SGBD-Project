@@ -1,17 +1,23 @@
 package impl;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Vector;
 
+import operateurs.PipeLine;
 import stockage.Nuplet;
 import stockage.Table;
 
 
 
-public class TableInt implements Table{
+public class TableInt implements Table,Iterable<Nuplet>{
 	
 	private int records;
 	FichierInt f;
+
+	
+
 	
 	public TableInt(String filePath, int nupletSize){
 		this.records = 0;
@@ -116,6 +122,51 @@ public class TableInt implements Table{
 		
 		
 
+		
+	}
+
+
+
+	
+	@Override
+	public Iterator<Nuplet> iterator() {
+		return  new Iter();
+	}
+	
+	public PipeLine pipeLine() {
+		return new Iter();
+		
+	}
+	
+	 private class Iter implements PipeLine{
+
+
+		private int current = 0 ; 
+		
+		@Override
+		public boolean hasNext() {
+		
+			return current < TableInt.this.size();
+		}
+
+		@Override
+		public Nuplet next() {
+			if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+		
+
+            return TableInt.this.get(current++);
+		}
+	
+		
+		@Override
+		public void open() {
+			this.current = 0 ;
+		}
+
+
+		
 		
 	}
 
