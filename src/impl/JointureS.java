@@ -2,14 +2,13 @@ package impl;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Vector;
 
 import comparator.NupletComparator;
 import operateurs.Jointure;
+import operateurs.PipeLine;
 import stockage.Nuplet;
 
 public class JointureS implements Jointure {
@@ -52,6 +51,12 @@ public class JointureS implements Jointure {
 		for(int i=0;i<retV.size();i++)
 			ret[i] = retV.elementAt(i);
 		return ret;
+	}
+
+	@Override
+	public PipeLine pipeLine(Nuplet[] t1, Nuplet[] t2, int att1, int att2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

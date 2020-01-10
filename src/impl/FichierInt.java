@@ -22,7 +22,6 @@ public class FichierInt implements Fichier{
 	public void store(int pos, Object o) {
 		try {
 			this.f = new RandomAccessFile(this.fp, "rw");
-			NupletInt n = (NupletInt) o;
 			byte[] b = new byte[nupletSize];
 			for(int i=0;i<nupletSize;i++) {
 				

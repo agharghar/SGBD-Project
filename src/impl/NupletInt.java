@@ -1,8 +1,12 @@
 package impl;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+import operateurs.PipeLine;
 import stockage.Nuplet;
 
-public class NupletInt implements Nuplet{
+public class NupletInt implements Nuplet,Iterable<Nuplet>{
 
 	private byte[] values;
 	
@@ -38,5 +42,56 @@ public class NupletInt implements Nuplet{
 	public void putAtt(int i, Object o) {
 		this.values[i] = (byte) o;
 	}
+	
+	@Override
+	public Iterator<Nuplet> iterator() {
+		return  null;
+	}
+	
+	@Override
+	public PipeLine pipeLine() {
+		return new Iter();
+		
+	}
+	
+	 private class Iter implements PipeLine{
+		
+		private int current = 0 ; 
+		
+		
+		
+		public Iter() {
+			super();
+
+		}
+
+		@Override
+		public boolean hasNext() {
+		
+			return current < NupletInt.this.values.length;
+		}
+
+		@Override
+		public Object next() {
+			if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+		
+
+            return NupletInt.this.getAtt(current++);
+		}
+		
+		
+
+		@Override
+		public void open() {
+			this.current = 0 ;
+		}
+
+
+		
+		
+	}
+
 
 }

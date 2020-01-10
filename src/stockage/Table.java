@@ -1,5 +1,7 @@
 package stockage;
 
+import operateurs.PipeLine;
+
 public interface Table {
 	
 	public Nuplet get(int pos);
@@ -10,5 +12,5 @@ public interface Table {
 	public void insert(Nuplet n);
 	public void delete(Nuplet n, int att, Object value); // efface tous les Nuplets dont att est égal à value
 	public void update(Nuplet n, int att, Object oldValue, Object newValue); // modifie tous les Nuplets dont att était égal à oldValue et leur met la valeur newValue
-
+	public PipeLine pipeLine() ;
 }

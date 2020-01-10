@@ -1,6 +1,5 @@
 package impl;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Vector;
@@ -80,10 +79,8 @@ public class TableInt implements Table,Iterable<Nuplet>{
 		
 		Nuplet[] nuplets = this.fullScan();
 		if((byte)n.getAtt(att) == (byte)value) {
-			boolean flag = false ; 
 			for(int i=0;i<nuplets.length;i++) {
 				if(nuplets[i].toString().hashCode() == n.toString().hashCode()) {
-					flag =true;
 					for(int j = i ; j<nuplets.length;j++) {
 						if(j+1 <= nuplets.length)
 							this.f.store(j, this.f.get(j+1));
@@ -130,9 +127,10 @@ public class TableInt implements Table,Iterable<Nuplet>{
 	
 	@Override
 	public Iterator<Nuplet> iterator() {
-		return  new Iter();
+		return  null;
 	}
 	
+	@Override
 	public PipeLine pipeLine() {
 		return new Iter();
 		
@@ -151,7 +149,7 @@ public class TableInt implements Table,Iterable<Nuplet>{
 
 		@Override
 		public Nuplet next() {
-			if (!hasNext()) {
+			if (hasNext()) {
                 throw new NoSuchElementException();
             }
 		

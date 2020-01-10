@@ -1,5 +1,7 @@
 package stockage;
 
+import operateurs.PipeLine;
+
 public interface Nuplet {
 
 	/**
@@ -14,4 +16,5 @@ public interface Nuplet {
 	public int size();
 	
 	public String toString();
+	public PipeLine pipeLine(); 
 }

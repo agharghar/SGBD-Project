@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import operateurs.Jointure;
+import operateurs.PipeLine;
 import stockage.Nuplet;
 
 public class JointureH implements Jointure{
@@ -33,6 +34,12 @@ public class JointureH implements Jointure{
 		for(int i=0;i<retV.size();i++)
 			ret[i] = retV.elementAt(i);
 		return ret;
+	}
+
+	@Override
+	public PipeLine pipeLine(Nuplet[] t1, Nuplet[] t2, int att1, int att2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
