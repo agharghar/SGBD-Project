@@ -37,6 +37,11 @@ public class NupletInt implements Nuplet,Iterable<Nuplet>{
 		}
 		return s;
 	}
+	
+
+	public byte[] getValues() {
+		return values;
+	}
 
 	@Override
 	public void putAtt(int i, Object o) {

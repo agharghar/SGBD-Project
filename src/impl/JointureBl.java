@@ -2,6 +2,7 @@ package impl;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
@@ -13,25 +14,29 @@ public class JointureBl implements Jointure,Iterable<Nuplet>{
 
 	@Override
 	public Nuplet[] jointure(Nuplet[] t1, Nuplet[] t2, int att1, int att2) {
-		
+	
 		Vector<Nuplet> retV= new Vector<Nuplet>();
 		for(Nuplet nuplet1 : t1) {
-			boolean flag = false ; 
+			Nuplet nuplet = null ;
 			for(Nuplet nuplet2 : t2) {
 				if(nuplet1.getAtt(att1) == nuplet2.getAtt(att2)) {
-					retV.addElement(nuplet2);
-					flag = true ; 
+					byte[] result = new byte[nuplet1.size() + nuplet2.size()];
+					System.arraycopy(nuplet1.getValues(), 0, result, 0, nuplet1.getValues().length);  
+					System.arraycopy(nuplet2.getValues(), 0, result, nuplet1.getValues().length, nuplet2.getValues().length);  
+					nuplet = new NupletInt(result) ;
+					retV.addElement(nuplet);
 				}
 			}
-			if(flag)
-				retV.addElement(nuplet1);
-				
+
 		}			
 		
 		Nuplet[] ret = new Nuplet[retV.size()];
 		for(int i=0;i<retV.size();i++)
 			ret[i] = retV.elementAt(i);
-		return ret;
+		
+		
+		
+		return ret ;
 			
 	}
 	
@@ -50,13 +55,13 @@ public class JointureBl implements Jointure,Iterable<Nuplet>{
 	 private class Iter implements PipeLine{
 
 		private Nuplet[] nuplets1,nuplets2;
+		private Nuplet n1 = null ;
 		private int att1,att2 ;
 		private int current1 = 0 ,current2 = 0 ;
 		private boolean flag = false; 
 		private Iterator<Nuplet> iterator1 = null ;
 		private Iterator<Nuplet> iterator2 = null ;
-		private Nuplet nupletTmp = null;
-		private boolean flagIt = true;
+
 		
 		
 		
@@ -74,8 +79,7 @@ public class JointureBl implements Jointure,Iterable<Nuplet>{
 		@Override
 		public boolean hasNext() {
 		
-			//return (iterator1 != null ? iterator1.hasNext() : (iterator2 != null ? iterator2.hasNext() : true));
-			return (current1 <= this.nuplets1.length || current2 <= this.nuplets2.length-1)  ;
+			return (current1 < this.nuplets1.length || current2 < this.nuplets2.length-1)  ;
 		}
 		
 
@@ -85,45 +89,34 @@ public class JointureBl implements Jointure,Iterable<Nuplet>{
                 throw new NoSuchElementException();
             }
 			
-			while(iterator1.hasNext() || current1 <= this.nuplets1.length) {
-				 
-				if(this.flagIt) {
-					if(iterator1.hasNext()) {
-						this.nupletTmp = iterator1.next();
-					}
+			
+			Nuplet nuplet = null ;
+			while(iterator1.hasNext() ) {
+				if(!flag) {
+					n1 = iterator1.next();
 					current1++;
-					this.flagIt = false;
+					flag = true;
 				}
-				
-				
-				
 				while(iterator2.hasNext() ) {
-					if(this.nupletTmp.getAtt(att1) == iterator2.next().getAtt(att2)) {
-						if(this.current2 <= 100 )
-							current2++;
-						flag = true ;
-						return nuplets2[current2-1];
-					}
+					Nuplet n2 = iterator2.next();
 					current2++;
+					if(n1.getAtt(att1) == n2.getAtt(att2)) {
+						byte[] result = new byte[n1.size() + n2.size()];
+						System.arraycopy(n1.getValues(), 0, result, 0, n1.getValues().length);  
+						System.arraycopy(n2.getValues(), 0, result, n1.getValues().length, n2.getValues().length);  
+						nuplet = new NupletInt(result) ;
+						return nuplet ;
+					}
 				}
-				
-				if(this.flag && iterator1.hasNext()) {
-					this.flag=false;
-					return nuplets1[current1-1];
-				}
-				this.flagIt = true;
+				flag = false;
 				this.iterator2 = Arrays.stream(this.nuplets2).iterator() ;
-				this.current2 = 0 ;
-			}
-			
-			if(!iterator1.hasNext()) {
-				this.flag=false;
-				current1++;
-				current2++;
-			}
-			
+				current2 =0;
+				
+				
 
-			return null;
+		}
+			return nuplet ;
+			
 		}
 	
 		

@@ -29,14 +29,10 @@ public class Opérateurs_de_base_sans_optimisation_5 {
 		}
 
 		
-
-		
-
-		
 		// 3 eme question 
 		
 		Jointure jointure = new JointureH() ; 
-		Nuplet[] res = jointure.jointure(tab1, tab2, 0, 1);
+		Nuplet[] res = jointure.jointure(tab1, tab2, 0, 2);
 		
 		for(Nuplet n : res)
 			System.out.println(n.toString());

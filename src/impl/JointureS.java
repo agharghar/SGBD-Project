@@ -29,21 +29,20 @@ public class JointureS implements Jointure {
 		Nuplet nuplet1 = iterator1.next();
 		Nuplet nuplet2 = iterator2.next();
 		while(iterator1.hasNext() && iterator2.hasNext()) {
-			
-
-				
-				if( (byte)nuplet1.getAtt(att1)  == (byte)nuplet2.getAtt(att2)) {
-					retV.addElement(nuplet2);
-					if(!retV.contains(nuplet1))
-						retV.addElement(nuplet1);
-					nuplet2 = iterator2.next() ; 	
-
-				}else if((byte)nuplet1.getAtt(att1)  < (byte)nuplet2.getAtt(att2)) {
-					nuplet1 = iterator1.next() ; 
-				}else if((byte)nuplet1.getAtt(att1)  > (byte)nuplet2.getAtt(att2)) {
-					nuplet2 = iterator2.next();
-				}
-				
+			Nuplet nuplet = null ;
+			if( (byte)nuplet1.getAtt(att1)  == (byte)nuplet2.getAtt(att2)) {
+				byte[] result = new byte[nuplet1.size() + nuplet2.size()];
+				System.arraycopy(nuplet1.getValues(), 0, result, 0, nuplet1.getValues().length);  
+				System.arraycopy(nuplet2.getValues(), 0, result, nuplet1.getValues().length, nuplet2.getValues().length);
+				nuplet = new NupletInt(result) ;
+				retV.addElement(nuplet); 	
+				nuplet2 = iterator2.next() ; 
+	
+			}else if((byte)nuplet1.getAtt(att1)  < (byte)nuplet2.getAtt(att2)) {
+				nuplet1 = iterator1.next() ; 
+			}else if((byte)nuplet1.getAtt(att1)  > (byte)nuplet2.getAtt(att2)) {
+				nuplet2 = iterator2.next();
+			}
 				
 		}
 		

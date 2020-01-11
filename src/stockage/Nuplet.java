@@ -17,4 +17,5 @@ public interface Nuplet {
 	
 	public String toString();
 	public PipeLine pipeLine(); 
+	public byte[] getValues();
 }

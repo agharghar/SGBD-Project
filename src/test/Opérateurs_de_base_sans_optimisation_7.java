@@ -98,7 +98,7 @@ public class Opérateurs_de_base_sans_optimisation_7 {
 		
 
 		System.out.println("start Join Bl");
-		PipeLine pipeLineJointureBl = new JointureBl().pipeLine(tab, tab1, 0, 5);
+		PipeLine pipeLineJointureBl = new JointureBl().pipeLine(tab, tab1, 0, 1);
 		pipeLineJointureBl.open();
 		while(pipeLineJointureBl.hasNext())
 			System.out.println(pipeLineJointureBl.next());
