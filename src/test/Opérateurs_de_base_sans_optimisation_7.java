@@ -3,6 +3,8 @@ package test;
 import java.util.Iterator;
 
 import impl.JointureBl;
+import impl.JointureH;
+import impl.JointureS;
 import impl.NupletInt;
 import impl.ProjectionImpl;
 import impl.RestrictionInt;
@@ -98,11 +100,27 @@ public class Opérateurs_de_base_sans_optimisation_7 {
 		
 
 		System.out.println("start Join Bl");
-		PipeLine pipeLineJointureBl = new JointureBl().pipeLine(tab, tab1, 0, 1);
+		PipeLine pipeLineJointureBl = new JointureBl().pipeLine(tab, tab1, 5, 9);
 		pipeLineJointureBl.open();
 		while(pipeLineJointureBl.hasNext())
 			System.out.println(pipeLineJointureBl.next());
 		System.out.println("END Join Bl");
+		System.out.println("----------------------------------------------------");
+		
+		System.out.println("start Join H");
+		PipeLine pipeLineJointureH = new JointureH().pipeLine(tab, tab1, 5, 9);
+		pipeLineJointureH.open();
+		while(pipeLineJointureH.hasNext())
+			System.out.println(pipeLineJointureH.next());
+		System.out.println("END Join H");
+		System.out.println("----------------------------------------------------");
+		
+		System.out.println("start Join S");
+		PipeLine pipeLineJointureS = new JointureS().pipeLine(tab, tab1, 5, 9);
+		pipeLineJointureS.open();
+		while(pipeLineJointureS.hasNext())
+			System.out.println(pipeLineJointureS.next());
+		System.out.println("END Join S");
 		System.out.println("----------------------------------------------------");
 		
 

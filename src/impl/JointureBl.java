@@ -2,7 +2,6 @@ package impl;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
@@ -90,7 +89,6 @@ public class JointureBl implements Jointure,Iterable<Nuplet>{
             }
 			
 			
-			Nuplet nuplet = null ;
 			while(iterator1.hasNext() ) {
 				if(!flag) {
 					n1 = iterator1.next();
@@ -104,18 +102,19 @@ public class JointureBl implements Jointure,Iterable<Nuplet>{
 						byte[] result = new byte[n1.size() + n2.size()];
 						System.arraycopy(n1.getValues(), 0, result, 0, n1.getValues().length);  
 						System.arraycopy(n2.getValues(), 0, result, n1.getValues().length, n2.getValues().length);  
-						nuplet = new NupletInt(result) ;
-						return nuplet ;
+						return new NupletInt(result) ;
 					}
 				}
 				flag = false;
 				this.iterator2 = Arrays.stream(this.nuplets2).iterator() ;
 				current2 =0;
 				
-				
+
 
 		}
-			return nuplet ;
+			if(current1 == nuplets1.length)
+				current2 = nuplets2.length;
+			return null ;
 			
 		}
 	
