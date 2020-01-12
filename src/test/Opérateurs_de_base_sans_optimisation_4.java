@@ -1,3 +1,12 @@
+/**
+ * 
+ * @author AGHARGHAR zakariya
+ * @version 1.0 
+ * 
+ * 
+ * 
+ */
+
 package test;
 
 import impl.JointureBl;
@@ -30,9 +39,26 @@ public class Opérateurs_de_base_sans_optimisation_4 {
 		
 
 		
-
+		/**
+		 * 4-Codez dans sgbd.impl la classe JointureBI qui implémente une jointure sur deux ensembles
+		 * de Nuplet[] sur les attributs  att1 de  t1 et att2 de  t2 en utilisant  un algorithme
+		 * basique  de  type doubles boucles imbriquées.
+		 * 
+		 */
 		
-		// 3 eme question 
+		/**
+		   * 
+		   * @param 
+		   * 	tab1 : 	table des données
+		   * 	tab2 :	table des données
+		   * 	0 :		numéro d'attribut de la table 1
+		   * 	2 : 	numéro d'attribut de la table 2
+		   * @return Nuplet[]
+		   * @exception No Exeption
+		   * 
+		   * Jointure sur tab1.att1 = tab1.att2 
+		   */
+		 
 		
 		Jointure jointure = new JointureBl() ; 
 		Nuplet[] res = jointure.jointure(tab1, tab2, 0, 2);

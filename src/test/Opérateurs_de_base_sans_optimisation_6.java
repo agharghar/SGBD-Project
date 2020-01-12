@@ -1,3 +1,12 @@
+/**
+ * 
+ * @author AGHARGHAR zakariya
+ * @version 1.0 
+ * 
+ * 
+ * 
+ */
+
 package test;
 
 import impl.JointureBl;
@@ -34,7 +43,24 @@ public class Opérateurs_de_base_sans_optimisation_6 {
 		
 
 		
-		// 3 eme question 
+		/**
+		 * 6- Codez danssgbd.impl la classe JointureS qui implémente 
+		 * une jointure en utilisant la technique de SortMergeJoin. 
+		 * Donnez des programmes exemple.
+		 */
+		
+		/**
+		   * 
+		   * @param 
+		   * 	tab1 : 	table des données
+		   * 	tab2 :	table des données
+		   * 	2 :		numéro d'attribut de la table 1
+		   * 	1 : 	numéro d'attribut de la table 2
+		   * @return Nuplet[]
+		   * @exception No Exeption
+		   * 
+		   * Jointure sur tab1.att1 = tab2.att2 en utilisant algo sort Merge
+		   */ 
 		
 		Jointure jointure = new JointureS() ; 
 		Nuplet[] res = jointure.jointure(tab1, tab2, 2, 1);

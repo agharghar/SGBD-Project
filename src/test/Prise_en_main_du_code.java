@@ -1,3 +1,13 @@
+/**
+ * 
+ * @author AGHARGHAR zakariya
+ * @version 1.0 
+ * 
+ * 
+ * 
+ */
+
+
 package test;
 
 import impl.NupletInt;
@@ -33,14 +43,39 @@ public class Prise_en_main_du_code {
 			}
 		
 		
-		//Prise en main du code 1- Test Full Scan 
-		System.out.println("Start Test Full Scan");
-		for(Nuplet n : t.fullScan()){
-			
-			System.out.println(n.toString()+'\n');
-		}
 		
-		System.out.println("END Test Full Scan");
+		/**
+		   * Prise en main du code 
+		   * 0- Prenez connaissance et comprendre le code. En terme d’algèbre relationnelle, qu’est ce qu’un Nuplet[] ?
+		   * 	Il s'agit d'une liste d'éléments finis. Dans notre cas, il représente une ligne dans une table 
+		   * 
+		   * Est-ce  que  dans  notre  code  les  données  restent  lorsque  le  programme  a  fini  de s’exécuter?
+		   * 	Oui, il est enregister dans un fichier C:/temp/table2 OU C:/temp/table1 .. 
+		   * 
+		   * 
+		   */
+		
+		
+		/**
+		   * 1- Codez la méthode fullScan() dans la classe TableInt. 
+		   * Cette méthode doit retourner un Nuplet[] contenant tous les Nuplets de la table .
+		   * 
+		   * @param args Unused.
+		   * @return Nuplet[]
+		   * @exception No Exeption
+		   * 
+		   * La méthode parse tout le fichier associé a la table ( représenter ici par t ) et retourne les nuplets
+		   * 
+		   */
+		
+		System.out.println("------------------------------------------------");	
+		System.out.println("Start Full Scan");
+		
+		for(Nuplet n : t.fullScan())
+			System.out.println(n);
+		
+		System.out.println("END Full Scan");
+		System.out.println("------------------------------------------------");	
 		
 	
 		

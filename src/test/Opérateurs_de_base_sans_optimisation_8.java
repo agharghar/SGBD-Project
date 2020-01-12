@@ -17,7 +17,7 @@ import impl.TableInt;
 import stockage.Nuplet;
 import stockage.Table;
 
-public class Opérateurs_de_base_sans_optimisation_10 {
+public class Opérateurs_de_base_sans_optimisation_8 {
 	public static final int datasetSize = 100;
 	public static final int nupletSize = 10;
 	
@@ -43,9 +43,27 @@ public class Opérateurs_de_base_sans_optimisation_10 {
 					t.put(tab[i]);
 					}
 				
+				/**
+				 * 8- Rajoutez des index
+				 * 
+				 */
 				
+				/**
+				   * 
+				   * @param 
+				   * 	tab : table des données
+				   * 	1 : numéro d'attribut à indexer
+				   * @return Nuplet[]
+				   * @exception 
+				   * 	si numeroIndex > tab.lenght : ArrayIndexOutOfBoundsException
+				   * 
+				   * Indexer une table
+				   */
+				
+				NupletIndex nupletIndex = new NupletIndex() ;
+				for( Nuplet nuplet : nupletIndex.index(t.fullScan(), 1))
+					System.out.println(nuplet);
 
-		
 	}
 
 }

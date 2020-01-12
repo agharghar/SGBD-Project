@@ -1,3 +1,12 @@
+/**
+ * 
+ * @author AGHARGHAR zakariya
+ * @version 1.0 
+ * 
+ * 
+ * 
+ */
+
 package test;
 
 import impl.JointureBl;
@@ -29,7 +38,24 @@ public class Opérateurs_de_base_sans_optimisation_5 {
 		}
 
 		
-		// 3 eme question 
+		/**
+		 * 5- Codez dans sgbd.impl la classe JointureH qui implémente une jointure 
+		 * en utilisant la technique de HashJoin. 
+		 * Donnez des programmes exemple.
+		 */
+		
+		/**
+		   * 
+		   * @param 
+		   * 	tab1 : 	table des données
+		   * 	tab2 :	table des données
+		   * 	0 :		numéro d'attribut de la table 1
+		   * 	2 : 	numéro d'attribut de la table 2
+		   * @return Nuplet[]
+		   * @exception No Exeption
+		   * 
+		   * Jointure sur tab1.att1 = tab2.att2 en utilisant hash(tab2.att2) in ? hash_table(tab1,att1)
+		   */ 
 		
 		Jointure jointure = new JointureH() ; 
 		Nuplet[] res = jointure.jointure(tab1, tab2, 0, 2);

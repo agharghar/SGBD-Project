@@ -1,3 +1,13 @@
+/**
+ * 
+ * @author AGHARGHAR zakariya
+ * @version 1.0 
+ * 
+ * 
+ * 
+ */
+
+
 package test;
 
 import impl.NupletInt;
@@ -32,32 +42,90 @@ public class Opérateurs_de_base_sans_optimisation_2 {
 			t.put(tab[i]);
 			}
 		
-		// 2 èmè question 
+		/**
+		   * 2- Codez dans sgbd.impl la classe RestrictionInt qui implémente la classe sgbd.operateurs.
+		   * Restriction et qui travaille sur des NupletInt. 
+		   * Proposez un programme Main qui démontre que votre code fonctionne.
+		   * 
+		   */
+		
+		/**
+		   * 
+		   * @param 
+		   * 	table : table des données
+		   * 	attribut : numéro d'attribut dans la table
+		   * 	value : valeur d'attribut dans la table
+		   * @return Nuplet[].
+		   * @exception 
+		   * 	Index 'attribut.value' out of bounds for length 'table.length'
+		   * 
+		   * La méthode compare tous les attributes avec la valeur fournie en arg ( attribut.value == value ) ? 
+		   * 	si true il retourne l'ensemble des nuplets
+		   * 
+		   */
+		System.out.println("----------------------------------------------------");
+		
 		System.out.println("Start compare equal");
 		RestrictionInt restrictionInt = new RestrictionInt() ; 
-		Nuplet n [] = restrictionInt.egalite(tab, 0, (byte)3);
+		Nuplet n [] = restrictionInt.egalite(tab, 0, (byte)20);
 		for(Nuplet nuplet : n )
 			System.out.println(nuplet.toString());
 		System.out.println("END compare equal");
 		
 		
 		
-		System.out.println("Start compare sup or equ");
+		
+		/**
+		   * 
+		   * @param 
+		   * 	table : table des données
+		   * 	attribut : numéro d'attribut dans la table
+		   * 	value : valeur d'attribut dans la table
+		   * @return Nuplet[].
+		   * @exception 
+		   * 	Index 'attribut.value' out of bounds for length 'table.length'
+		   * 
+		   * La méthode compare tous les attributes avec la valeur fournie en arg ( attribut.value >= value ) ? 
+		   * 	si true il retourne l'ensemble des nuplets
+		   * 
+		   */
+		
+		
 		System.out.println("----------------------------------------------------");
+		
+		System.out.println("Start compare sup or equ");
 		Nuplet n2 [] = restrictionInt.superieur(tab, 0, (byte)3);
 		for(Nuplet nuplet : n2 )
 			System.out.println(nuplet.toString());
 		
 		System.out.println("END compare sup or equ");
 		
+		
+		/**
+		   * 
+		   * @param 
+		   * 	table : table des données
+		   * 	attribut : numéro d'attribut dans la table
+		   * 	value : valeur d'attribut dans la table
+		   * @return Nuplet[].
+		   * @exception 
+		   * 	Index 'attribut.value' out of bounds for length 'table.length'
+		   * 
+		   * La méthode compare tous les attributes avec la valeur fournie en arg ( attribut.value <= value ) ? 
+		   * 	si true il retourne l'ensemble des nuplets
+		   * 
+		   */
+		
+		System.out.println("----------------------------------------------------");
 	
 		System.out.println("Start compare INF or equ");
-		System.out.println("----------------------------------------------------");
 		Nuplet n3 [] = restrictionInt.inferieur(tab, 0, (byte)3);
 		for(Nuplet nuplet : n3 )
 			System.out.println(nuplet.toString());
 		
 		System.out.println("END compare INF or equ");
+		
+		System.out.println("----------------------------------------------------");
 		
 	}
 

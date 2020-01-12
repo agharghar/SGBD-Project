@@ -139,7 +139,7 @@ public class TableInt implements Table,Iterable<Nuplet>{
 	 private class Iter implements PipeLine{
 
 
-		private int current = 0 ; 
+		private int current = -1 ; 
 		
 		@Override
 		public boolean hasNext() {
@@ -149,10 +149,6 @@ public class TableInt implements Table,Iterable<Nuplet>{
 
 		@Override
 		public Nuplet next() {
-			if (hasNext()) {
-                throw new NoSuchElementException();
-            }
-		
 
             return TableInt.this.get(current++);
 		}
