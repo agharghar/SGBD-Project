@@ -79,7 +79,6 @@ public class Prise_en_main_du_code {
 		
 	
 		
-		
 	}
 
 }

@@ -1,7 +1,6 @@
 package impl;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Vector;
 
 import operateurs.PipeLine;
@@ -108,14 +107,14 @@ public class TableInt implements Table,Iterable<Nuplet>{
 	public void update(Nuplet n, int att, Object oldValue, Object newValue) {
 		Nuplet[] nuplets = this.fullScan();
 		
-		if((byte)n.getAtt(att) == (byte)oldValue) {
-			for(int i=0;i<nuplets.length;i++) {
-				if(nuplets[i].toString().hashCode() == n.toString().hashCode()) {
-					n.putAtt(i, (byte)newValue);
-					this.f.store(i, n);
-				}		
+		for(int i =0 ;i<nuplets.length ; i++) {
+			if((byte)nuplets[i].getAtt(att) == (byte)oldValue) {
+						nuplets[i].putAtt(att, (byte)newValue);
+						this.f.store(i, nuplets[i]);
+
 			}
 		}
+
 		
 		
 

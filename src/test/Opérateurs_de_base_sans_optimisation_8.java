@@ -9,10 +9,9 @@
 
 package test;
 
-import java.util.Random;
-
-import impl.NupletIndex;
+import impl.NonDenseIndex;
 import impl.NupletInt;
+import impl.RestrictionInt;
 import impl.TableInt;
 import stockage.Nuplet;
 import stockage.Table;
@@ -23,13 +22,12 @@ public class Opérateurs_de_base_sans_optimisation_8 {
 	
 	public static void main(String[] args) {
 
-		Random random = new Random();
 		// Génération des données
 				Nuplet[] tab = new NupletInt[datasetSize];
 				for(int i=0;i<datasetSize;i++){
 					tab[i] = new NupletInt(nupletSize);
 					for(int j=0;j<nupletSize;j++){
-						tab[i].putAtt(j, (byte)(j+i+random.nextInt(10)));
+						tab[i].putAtt(j, (byte)(i+j));
 					}
 				}
 
@@ -44,7 +42,7 @@ public class Opérateurs_de_base_sans_optimisation_8 {
 					}
 				
 				/**
-				 * 8- Rajoutez des index
+				 * 8- Rajoutez des index Non Dense
 				 * 
 				 */
 				
@@ -52,17 +50,39 @@ public class Opérateurs_de_base_sans_optimisation_8 {
 				   * 
 				   * @param 
 				   * 	tab : table des données
-				   * 	1 : numéro d'attribut à indexer
+				   * 	2 : numéro d'attribut à indexer
 				   * @return Nuplet[]
-				   * @exception 
-				   * 	si numeroIndex > tab.lenght : ArrayIndexOutOfBoundsException
+				   * @exception No Exeption
 				   * 
-				   * Indexer une table
+				   * Indexer une table avec un objet qui représente un index 
 				   */
 				
-				NupletIndex nupletIndex = new NupletIndex() ;
-				for( Nuplet nuplet : nupletIndex.index(t.fullScan(), 1))
+				System.out.println("---------------------");
+				NonDenseIndex nupletIndex = new NonDenseIndex(t.fullScan(),2) ;
+				
+				for(Nuplet nuplet : t.fullScan()) {
 					System.out.println(nuplet);
+				}
+				
+				System.out.println("---------------------");
+				for( Nuplet nuplet : nupletIndex.index(3))
+					System.out.println(nuplet);
+				/*
+				 * Comparaison temps de réponse index et restriction : 
+				 * 
+				 */
+				
+				RestrictionInt restrictionInt = new RestrictionInt() ; 
+				
+				double startTimeIndex = System.nanoTime();
+				nupletIndex.index(3) ; 
+				double endTimeIndex = System.nanoTime();
+				double startTimeRestriction = System.nanoTime();
+				restrictionInt.egalite(tab, 0, (byte)3);
+				double endTimeRestriction = System.nanoTime();
+				System.out.println("Index Response Time :"+(endTimeIndex - startTimeIndex ));
+				System.out.println("Restriction Response Time : "+(endTimeRestriction - startTimeRestriction));
+				
 
 	}
 
