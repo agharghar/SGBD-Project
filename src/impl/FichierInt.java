@@ -3,6 +3,9 @@ package impl;
 
 import java.io.*;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import stockage.Fichier;
 
 
@@ -13,6 +16,8 @@ public class FichierInt implements Fichier{
 	private RandomAccessFile f;
 	private int nupletSize;
 	private int currentLength;
+	private Logger logger = Logger.getLogger(TableInt.class.getName());
+
 	
 	public FichierInt(String filePath, int nupletSize){
 		this.fp = filePath;
@@ -32,6 +37,8 @@ public class FichierInt implements Fichier{
 			this.f.seek(pos*nupletSize);
 			this.f.write(b);
 			this.f.close();
+			PropertyConfigurator.configure("log4j.properties");
+			logger.info("INSERT : "+o+" FILE :"+this.fp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

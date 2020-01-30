@@ -98,7 +98,7 @@ public class Opérateurs_de_base_sans_optimisation_10 {
 
 				t.update(tab[0], 0, (byte)0, (byte)99);
 				t.update(tab[1], 0, (byte)1, (byte)11);
-				System.out.println("dead Lock ici ");
+				System.out.println("dead Lock ici ==> veuillez lire les COMMENTRAIRES!! <==");
 				
 				/*
 				 * Solution : 

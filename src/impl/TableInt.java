@@ -3,6 +3,7 @@ package impl;
 import java.util.Iterator;
 import java.util.Vector;
 
+
 import operateurs.PipeLine;
 import stockage.Nuplet;
 import stockage.Table;
@@ -13,7 +14,6 @@ public class TableInt implements Table,Iterable<Nuplet>{
 	
 	private int records;
 	FichierInt f;
-
 	
 
 	

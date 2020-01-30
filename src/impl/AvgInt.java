@@ -15,7 +15,7 @@ public class AvgInt implements Avg{
 			}
 				
 		}
-		return i != 0 ?  avg/i : 0 ; 
+		return i != 0 ?  (double)avg/(double)i : 0 ; 
 		
 	}
 	
